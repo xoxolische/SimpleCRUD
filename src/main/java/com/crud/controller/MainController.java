@@ -1,27 +1,24 @@
 package com.crud.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
 
 	@GetMapping({ "/", "main" })
-	public String mainPage(Model model) {
+	public String mainPage() {
 		return "home";
 	}
 
-	@GetMapping("help")
-	public String aboutPage(Model model) {
-		return "about";
+	@GetMapping("/custom")
+	public String customPage() {
+		return "custom";
 	}
 
-	@RequestMapping("404")
-	public String error404() {
-		// System.out.println("custom error handler");
-		return "/errorPage";
+	@GetMapping("/jsgrid")
+	public String jsGridPage() {
+		return "jsgrid";
 	}
 
 }

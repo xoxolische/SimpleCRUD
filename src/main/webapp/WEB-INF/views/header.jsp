@@ -44,7 +44,7 @@ body {
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">SimpleCrud</a>
+			<a class="navbar-brand" href="<c:url value="/"/>">SimpleCrud</a>
 		</div>
 	</div>
 	</nav>
