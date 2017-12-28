@@ -24,16 +24,17 @@
 					<button type="button" class="btn btn-primary" onclick="update()">Save</button>
 				</div>
 				<div class="btn-group">
-					<button type="button" class="btn btn-primary">Up</button>
+					<button type="button" class="btn btn-primary" onclick="up()">Up</button>
 				</div>
 				<div class="btn-group">
-					<button type="button" class="btn btn-primary">Down</button>
+					<button type="button" class="btn btn-primary" onclick="down()">Down</button>
 				</div>
 				<div class="btn-group">
-					<button type="button" class="btn btn-primary">Delete</button>
+					<button type="button" class="btn btn-primary" onclick="deleteItem()">Delete</button>
 				</div>
 			</div>
-			<div id="holder" class="top-5 well col-md-12"></div>
+			<div id="holder" class="top-5 well col-md-12">
+			</div>
 		</div>
 	</div>
 	<input type="hidden" id="currentId">

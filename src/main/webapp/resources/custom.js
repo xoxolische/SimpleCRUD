@@ -56,8 +56,34 @@ function update() {
 		}).done(function(data) {
 			console.log("success!")
 			$("#" + data.id).replaceWith(splitObj(data));
+			$("#text").val("");
+			$("#saveButton").prop("disabled", false);
+			$("#panelGroup").hide();
 		}).fail(function() {
 			console.log("oh no... Failed to update!")
+		});
+	}
+}
+
+function deleteItem() {
+	var id = $("#currentId").val();
+	var $next = $("#" + id).next(".h");
+	if (id != null && id != "") {
+		$.ajax({
+			method : "DELETE",
+			url : '/crud/notes/delete/' + id,
+		}).done(function() {
+			$("#" + id).hide();
+			if ($next.is(":visible") && $next.attr("id") != null) {
+				$next.click();
+			} else {
+				$("#text").val("");
+				$("#saveButton").prop("disabled", false);
+				$("#panelGroup").hide();
+			}
+
+		}).fail(function() {
+			alert("Got error while deleting item!");
 		});
 	}
 }
@@ -96,6 +122,42 @@ function prepareDateTime(date) {
 	return moment(date).format('DD-MM-YYYY HH:mm:ss');
 }
 
-function updateView(){
-	
+function down() {
+	var id = $("#currentId").val();
+	var $upper = $("#" + id);
+	var $lower = $("#" + id).next(".h");	
+	if($lower.is(":visible")){
+		$lower.swap($upper);		
+	}else{
+		$("#text").val("");
+		$("#saveButton").prop("disabled", false);
+		$("#panelGroup").hide();
+	}
 }
+
+function up() {
+	var id = $("#currentId").val();
+	var $upper = $("#" + id);
+	var $lower = $("#" + id).prev(".h");	
+	if($lower.is(":visible")){
+		$lower.swap($upper);		
+	}else{
+		$("#text").val("");
+		$("#saveButton").prop("disabled", false);
+		$("#panelGroup").hide();
+	}
+}
+
+jQuery.fn.swap = function(b) {
+	b = jQuery(b)[0];
+	var a = this[0],
+	    a2 = a.cloneNode(true),
+	    b2 = b.cloneNode(true),
+	    stack = this;
+	
+	a.parentNode.replaceChild(b2, a);
+	b.parentNode.replaceChild(a2, b);
+	
+	stack[0] = a2;
+	return this.pushStack( stack );
+};
