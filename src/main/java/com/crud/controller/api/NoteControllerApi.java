@@ -35,7 +35,7 @@ public class NoteControllerApi {
 	@ResponseBody
 	public Note editNote(@RequestBody Note note) {
 		noteService.update(note);
-		return note;
+		return noteService.get(note.getId());
 	}
 	
 	@DeleteMapping(value = "/delete/{id}")

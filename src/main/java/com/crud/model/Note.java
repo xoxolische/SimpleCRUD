@@ -24,7 +24,7 @@ public class Note {
 	@Column(name = "text")
 	private String message;
 
-	@Column(name = "create_date")
+	@Column(name = "create_date", updatable = false)
 	@CreationTimestamp
 	private Timestamp createDate;
 
